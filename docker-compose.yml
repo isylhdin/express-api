@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  app:
+    command: npm run dev
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+
+  mongo:
+    image: mongo
+    volumes:
+      - ./api-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  api-data:
