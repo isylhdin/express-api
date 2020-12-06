@@ -12,7 +12,7 @@ export class UsersMiddleware {
         return UsersMiddleware.instance;
     }
     validateRequiredCreateUserBodyFields(req: express.Request, res: express.Response, next: express.NextFunction) {
-        if (req?.body.email && req?.body.password) {
+        if (req.body?.email && req.body?.password) {
             next();
         } else {
             res.status(400).send({error: `Missing required fields email and password`});

@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from "body-parser";
 import * as http from 'http';
 
 import {CommonRoutesConfig} from './common/common.routes.config';
@@ -8,6 +9,9 @@ import {AuthRoutes} from './auth/auth.routes.config'
 const app: express.Application = express();
 const server: http.Server = http.createServer(app);
 const port = 8080;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const routes: any = [];
 routes.push(new UsersRoutes(app));
